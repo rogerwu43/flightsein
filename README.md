@@ -1,24 +1,20 @@
-# flightsein
+# Flightsein
 
-## Project setup
+A simple app written in Vue.js that allows searching for Australian Airports & Flights.
+A great opportunity to have learnt some Vue!
+
+![Screenshot 1](image.png)
+
+![Screenshot 2](image-1.png)
+
+## Setup
+
+### Install npm packages
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compile and run the server on http://localhost:8080
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

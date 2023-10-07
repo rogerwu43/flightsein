@@ -1,29 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import HomeView from '../views/Home.vue';
 
 const routes = [
     {
-        path: '/home',
-        name: 'home',
-        component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
-        // component: HomeView
+        path: '/airports/search',
+        name: 'airports-search',
+        component: () => import('../views/AirportsSearch.vue'),
+        meta: { title: 'Airports' },
     },
     {
-        path: '/search',
-        name: 'search',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/Search.vue')
+        path: '/airports/airport/:icao',
+        name: 'airport',
+        component: () => import('../views/Airport.vue'),
+        meta: { title: 'Airport' },
     },
+
     {
-        path: '/flight/:id',
+        path: '/flight/:icao',
         name: 'flight',
-        component: () => import('../views/Flight.vue')
+        component: () => import('../views/Flight.vue'),
+        meta: { title: 'Flight' },
     },
+
+    {
+        path: '/about',
+        name: 'about',
+        component: () => import('../views/About.vue'),
+        meta: { title: 'About' },
+    },
+    
     {
         path: "/:catchAll(.*)",
-        redirect: '/home'
+        redirect: '/airports/search'
     }
 ]
 
@@ -31,5 +38,9 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 });
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title;
+    next();
+  });  
 
 export default router;
